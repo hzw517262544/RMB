@@ -20,4 +20,19 @@
     </bean>
     <!--使用注解控制事物-->
     <tx:annotation-driven transaction-manager="transactionManager"></tx:annotation-driven>
+
+    <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" value="dataSource"></property>
+        <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+        <property name="mapperLocations">
+            <list>
+                <value>classpath:mapper/*.xml</value>
+            </list>
+        </property>
+    </bean>
+    <!--扫描生成所有的dao层对象，放到spring容器-->
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.hao.rmb.dao"></property>
+        <property name="sqlSessionTemplateBeanName" value="sqlSessionFactory"></property>
+    </bean>
 </beans>
