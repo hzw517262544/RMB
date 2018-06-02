@@ -12,8 +12,8 @@
         <!--前缀-->
         <property name="prefix" value="/WEB-INF/views/"></property>
         <!--后缀-->
-        <property name="suffix" value=".jsp"></property>
+        <property name="suffix" value=".html"></property>
     </bean>
     <!--扫描所有控制器-->
-    <context:component-scan base-package="com.hao.rmb.web.handler"></context:component-scan>
+    <context:component-scan base-package="com.hao.rmb.action"></context:component-scan>
 </beans>
