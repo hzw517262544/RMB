@@ -5,16 +5,18 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!--扫描业务层组件-->
     <context:component-scan base-package="com.hao.rmb.service"></context:component-scan>
+
+    <context:property-placeholder location="classpath:/jdbc.properties"></context:property-placeholder>
     <!--定义数据源-->
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="driverClass" value="jdbc.com.mysql.jdbc.Driver"></property>
-        <property name="jdbcUrl" value="jdbc:mysql://127.0.0.1:3306/vip"></property>
-        <property name="user" value="root"></property>
-        <property name="password" value="root"></property>
-        <property name="minPoolSize" value="1"></property>
-        <property name="maxPoolSize" value="5"></property>
-        <property name="initialPoolSize" value="1"></property>
-        <property name="acquireIncrement" value="1"></property>
+        <property name="driverClass" value="${driverClass}"></property>
+        <property name="jdbcUrl" value="${jdbcUrl}"></property>
+        <property name="user" value="${user}"></property>
+        <property name="password" value="${password}"></property>
+        <property name="minPoolSize" value="${minPoolSize}"></property>
+        <property name="maxPoolSize" value="${maxPoolSize}"></property>
+        <property name="initialPoolSize" value="${initialPoolSize}"></property>
+        <property name="acquireIncrement" value="${acquireIncrement}"></property>
     </bean>
     <!--声明事物管理器-->
     <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">

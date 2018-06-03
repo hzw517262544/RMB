@@ -1,6 +1,6 @@
 package com.hao.rmb.action.login;
 
-import com.hao.common.utils.RmbUtils;
+import com.hao.common.constant.SystemConstants;
 import com.hao.rmb.entity.user.UserEntity;
 import com.hao.rmb.service.login.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +19,26 @@ public class LoginAction {
         try {
             HttpSession session = request.getSession();
             UserEntity userEntity = loginService.login(account,password);
-            session.setAttribute("currentUser",userEntity);
+            session.setAttribute(SystemConstants.CURRENT_USER,userEntity);
+            if(!password.equals(userEntity.getPassword())){
+                return "forward:/welcome.html";
+            }
         } catch (Exception e) {
+            e.printStackTrace();
             request.setAttribute("message",e.getMessage());
             return "forward:/welcome.html";
         }
-        return "reirect:/welcome.do";
+        return "redirect:/welcome.do";
     }
     @RequestMapping("/welcome.do")
     public String welcome(){
-        return "loginOk";
+        return "mainPage";
+    }
+
+    @RequestMapping("/logout.do")
+    public String logout(HttpSession session){
+        //session失效
+        session.invalidate();
+        return "redirect:/welcome.html";
     }
 }

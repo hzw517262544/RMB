@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>吃了吗</title>
+    <link href="../css/mainPage.css" rel="stylesheet" type="text/css">
+    <style>
+        header,menu,h1,ul{
+            margin: 0;
+        }
+        html>body{
+            margin-left: 0;
+            width: 100%;
+            height: 100%;
+            font-size: 16px;
+        }
+        body>header{
+            line-height: 50px;
+            background: #4cae4c;
+            text-align: center;
+        }
+        body>header>h1{
+            display: inline;
+            text-align: center;
+        }
+        body>header>span>a{
+            float: right;
+        }
+        .body{
+            position: absolute;
+            top: 80px;
+            bottom: 0;
+            width: 100%;
+        }
+        .body>menu{
+            position: absolute;
+            left: 0;
+            width: 150px;
+            height: 100%;
+            background: #4cae4c;
+            box-sizing: border-box;
+        }
+        .body>main{
+            margin-left: 150px;
+            height: 100%;
+            display: block;
+        }
+        main>iframe{
+            display: block;
+            width: 100%;
+            height: 100%;
+            border: 0px;
+            background: #2aabd2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>吃了吗</h1>
+        <a href="logout.do">退出</a>
+    </header>
+    <section class="body">
+        <menu>
+            <ul>
+                <li><a>菜单一</a></li>
+                <li><a>菜单二</a></li>
+                <li><a>菜单三</a></li>
+                <li><a>菜单四</a></li>
+                <li><a>菜单五</a></li>
+                <li><a>菜单六</a></li>
+                <li><a href="updatepassword.do" methods="GET" target="mainIframe">修改密码</a></li>
+            </ul>
+
+        </menu>
+        <main>
+            <iframe name="mainIframe" src=""></iframe>
+        </main>
+    </section>
+
+</body>
+</html>
