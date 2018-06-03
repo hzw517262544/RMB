@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hao.rmb.dao.user.UserDao">
+    <select id="select" resultType="com.hao.rmb.entity.user.UserEntity">
+        select * from sys_user where ${key}=${value}
+    </select>
+
+    <insert id="insert">
+      INSERT INTO SYS_USER
+      (id,account,name,password)
+      VALUES (
+      ?,
+      ?,
+      ?,
+      ?
+      )
+    </insert>
+
+    <delete id="delete">
+      delete from sys_user where ${key}=${value}
+    </delete>
+
+    <update id="update">
+      update  sys_user
+      set
+      account = #{account},
+      name = #{name},
+      password = #{password}
+      where id=#{id}
+    </update>
+</mapper>
